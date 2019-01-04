@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import AVFoundation
+import AVFoundation             //importing for sound
 
 protocol subviewDelegate{
     func changeBehavior ()
@@ -209,18 +209,17 @@ class ViewController: UIViewController, subviewDelegate {
         
         //Assign the size and position of the image view
         birdView.image = UIImage.animatedImage(with: imageArray4, duration: 1)
-        birdView.frame = CGRect(x:self.W, y: CGFloat(arc4random_uniform(UInt32(self.H))), width: self.W*(0.25), height: self.H*(0.25))
+        birdView.frame = CGRect(x:self.W, y: CGFloat(arc4random_uniform(UInt32(self.H))), width: self.W*(0.18), height: self.H*(0.18))
     
         
         
         //Add the image view to the main view
         self.view.addSubview(birdView)
-      
         self.view.bringSubviewToFront(birdView)
                 
         self.dynamicBehavior.addItem(birdView)
         self.dynamicBehavior.addLinearVelocity(CGPoint(x: -200, y:0), for: birdView)
-       // self.collisionBehaviour.addItem(birdView)
+        self.collisionBehaviour.addItem(birdView)
                 self.collisionBehaviour.action = {
                     if(self.planeImage.frame.intersects(birdView.frame)){
                         self.deduct -= 5
@@ -246,15 +245,9 @@ class ViewController: UIViewController, subviewDelegate {
                                 UIImage(named: "star coin rotate 2.png")!,
                                 UIImage(named: "star coin rotate 3.png")!,
                                 UIImage(named: "star coin rotate 4.png")!]
-                                //UIImage(named: "star coin rotate 5.png")!,
-                // UIImage(named: "star coin rotate 6.png")! as! [UIImage]
-                
-                
-                //Assign an image to the image view
-                
                 
                 //Assign the size and position of the image view
-                coinView.image = UIImage.animatedImage(with: imageArray5, duration: 5)
+                coinView.image = UIImage.animatedImage(with: imageArray5, duration: 7)
                 coinView.frame = CGRect(x:self.W, y: CGFloat(arc4random_uniform(UInt32(self.H)-60)), width: self.W*(0.03), height: self.H*(0.09))
                 
         
